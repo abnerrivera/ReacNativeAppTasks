@@ -1,20 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+//navigation
+import { NavigationContainer } from '@react-navigation/native'; //crea un contenedor navegable
+import { createNativeStackNavigator } from '@react-navigation/native-stack'; //funcion a ejecutar para navegar entre screens
+//components
+import HomeScren from './screens/HomeScreen';
+import TaskFormScreen from './screens/TaskFormScreen';
+
+const Stack = createNativeStackNavigator(); //funcion para navegar
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        {/* las rutas se leen de arriab a abajo la primera sera la primera en verse */}
+        <Stack.Screen name='HomeScreen' component={HomeScren} />
+        <Stack.Screen name='TaskFormScreen' component={TaskFormScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
