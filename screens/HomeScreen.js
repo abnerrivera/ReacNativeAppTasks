@@ -1,33 +1,32 @@
 //react
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 //ui
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View, } from 'react-native';
 
-export default function App() {
+//data
+import { getTasks } from "../Api";
+import Layout from '../components/Layout';
+import TaskList from '../components/TaskList';
+
+export default function HomeScreen() {
+
+  const [data, setData] = useState([]);
 
   //get api
   const loadTasks = async () => {
-    
+    const response = await getTasks();
+    setData(response);
   };
 
   useEffect(() => {
     loadTasks();
   }, [])
-  
+
   return (
-    <View style={styles.container}>
-      <Text>home</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Layout>
+      <TaskList
+        data={data}
+      />
+    </Layout>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
