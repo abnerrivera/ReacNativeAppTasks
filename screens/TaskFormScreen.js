@@ -1,20 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import Layout from '../components/Layout';
 
-export default function App() {
+export default function TaskFormScreen() {
   return (
-    <View style={styles.container}>
+    <Layout>
       <Text>formTask</Text>
       <StatusBar style="auto" />
-    </View>
+    </Layout>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
